@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import filedialog
+import tkinter.messagebox as messagebox
 import subprocess
 import os
 import shutil
@@ -37,7 +38,8 @@ class Window:
         self.root.mainloop()
         
     def vscode_open(self):
-        subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
+        if os.path.isdir(WORK_FOLDER_PATH):
+            subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
         
     def folder_change(self):
         folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
