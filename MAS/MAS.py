@@ -36,7 +36,7 @@ class Window:
         self.button_run.pack(anchor=tkinter.W, pady=5)
         
         self.root.mainloop()
-        
+    
     def vscode_open(self):
         if os.path.isdir(WORK_FOLDER_PATH):
             subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
@@ -47,6 +47,9 @@ class Window:
     def folder_change(self):
         folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
         if folder_path == '':
+            return
+        if not os.path.exists(WORK_FOLDER_PATH):
+            shutil.move(folder_path, WORK_FOLDER_PATH)
             return
         if os.path.isfile(WORK_FOLDER_PATH):
             os.remove(WORK_FOLDER_PATH)
