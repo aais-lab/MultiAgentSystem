@@ -40,6 +40,9 @@ class Window:
     def vscode_open(self):
         if os.path.isdir(WORK_FOLDER_PATH):
             subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
+        else:
+            tkinter.Tk().withdraw()
+            messagebox.showinfo("ERROR","workフォルダがありません\n「work差替」からworkフォルダを設定してください")
         
     def folder_change(self):
         folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
