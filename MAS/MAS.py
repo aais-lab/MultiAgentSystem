@@ -44,12 +44,12 @@ class Window:
             messagebox.showinfo("ERROR","workフォルダがありません\n「work差替」からworkフォルダを設定してください")
         
     def workDir_change(self):
-        folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
-        if folder_path == '':
+        work_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
+        if work_path == '':
             return
         if os.path.exists(WORK_FOLDER_PATH):
             shutil.rmtree(WORK_FOLDER_PATH)
-        shutil.move(folder_path, WORK_FOLDER_PATH)
+        shutil.move(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
         shutil.make_archive('archive_work', format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
