@@ -3,6 +3,7 @@ from tkinter import filedialog, messagebox
 import subprocess
 import os
 import shutil
+import send2trash as trash
 
 WORK_FOLDER_PATH = os.path.dirname(__file__)+'/MAS/work'
 USER_DESKTOP_PATH = os.path.expanduser('~')+'/Desktop'
@@ -48,10 +49,7 @@ class Window:
         if work_path == '':
             return
         if os.path.exists(WORK_FOLDER_PATH):
-            if os.path.isdir(WORK_FOLDER_PATH):
-                shutil.rmtree(WORK_FOLDER_PATH)
-            else:
-                os.remove(WORK_FOLDER_PATH)
+            trash.send2trash(WORK_FOLDER_PATH)
         shutil.move(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
