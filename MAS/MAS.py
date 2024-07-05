@@ -22,7 +22,7 @@ class Window:
         self.label_folder.pack(anchor=tkinter.NW)
         self.button_open = tkinter.Button(self.frame_folder, text='VSCodeで開く', font=('MSゴシック', '20'), padx=2, pady=2, relief=tkinter.RAISED, width=19, height=2, background='white', command=self.vscode_open)
         self.button_open.pack(anchor=tkinter.W, pady=5)
-        self.button_change = tkinter.Button(self.frame_folder, text='work差替', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_change)
+        self.button_change = tkinter.Button(self.frame_folder, text='work差替', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.workDir_change)
         self.button_change.pack(side=tkinter.LEFT)
         self.button_export = tkinter.Button(self.frame_folder, text='zipで出力', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_export)
         self.button_export.pack(side=tkinter.LEFT)
@@ -43,7 +43,7 @@ class Window:
             tkinter.Tk().withdraw()
             messagebox.showinfo("ERROR","workフォルダがありません\n「work差替」からworkフォルダを設定してください")
         
-    def folder_change(self):
+    def workDir_change(self):
         folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
         if folder_path == '':
             return
