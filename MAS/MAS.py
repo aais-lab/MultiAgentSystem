@@ -4,6 +4,7 @@ import subprocess
 import os
 import shutil
 import send2trash as trash
+import datetime
 
 WORK_FOLDER_PATH = os.path.dirname(__file__)+'/MAS/work'
 USER_DESKTOP_PATH = os.path.expanduser('~')+'/Desktop'
@@ -53,7 +54,8 @@ class Window:
         shutil.move(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
-        shutil.make_archive('archive_work', format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
+        now = datetime.datetime.now()
+        shutil.make_archive('archive_work_'+format(now, '%Y-%m-%d_%H-%M-%S'), format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
         
     def MAS_run(self):
         applescript_code = f"""
