@@ -1,6 +1,5 @@
 import tkinter
-from tkinter import filedialog
-import tkinter.messagebox as messagebox
+from tkinter import filedialog, messagebox
 import subprocess
 import os
 import shutil
