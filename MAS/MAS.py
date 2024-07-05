@@ -8,6 +8,7 @@ import datetime
 
 WORK_FOLDER_PATH = os.path.dirname(__file__)+'/MAS/work'
 USER_DESKTOP_PATH = os.path.expanduser('~')+'/Desktop'
+EXPORT_WORK_PATH = os.path.join(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)),"work_archives")
 
 class Window:
     def __init__(self) -> None:
@@ -55,7 +56,7 @@ class Window:
         
     def folder_export(self):
         now = datetime.datetime.now()
-        shutil.make_archive('archive_work_'+format(now, '%Y-%m-%d_%H-%M-%S'), format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
+        shutil.make_archive(os.path.join(EXPORT_WORK_PATH,'archive_work_'+format(now, '%Y-%m-%d_%H-%M-%S')), format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
         
     def MAS_run(self):
         applescript_code = f"""
