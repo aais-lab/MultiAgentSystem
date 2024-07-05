@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import subprocess
 import os
 import shutil
@@ -22,7 +22,7 @@ class Window:
         self.label_folder.pack(anchor=tkinter.NW)
         self.button_open = tkinter.Button(self.frame_folder, text='VSCodeで開く', font=('MSゴシック', '20'), padx=2, pady=2, relief=tkinter.RAISED, width=19, height=2, background='white', command=self.vscode_open)
         self.button_open.pack(anchor=tkinter.W, pady=5)
-        self.button_change = tkinter.Button(self.frame_folder, text='work差替', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_change)
+        self.button_change = tkinter.Button(self.frame_folder, text='work差替', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.workDir_change)
         self.button_change.pack(side=tkinter.LEFT)
         self.button_export = tkinter.Button(self.frame_folder, text='zipで出力', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_export)
         self.button_export.pack(side=tkinter.LEFT)
@@ -35,16 +35,24 @@ class Window:
         self.button_run.pack(anchor=tkinter.W, pady=5)
         
         self.root.mainloop()
-        
+    
     def vscode_open(self):
-        subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
+        if os.path.isdir(WORK_FOLDER_PATH):
+            subprocess.Popen(['code', '-n', WORK_FOLDER_PATH])
+        else:
+            tkinter.Tk().withdraw()
+            messagebox.showinfo("ERROR","workフォルダがありません\n「work差替」からworkフォルダを設定してください")
         
-    def folder_change(self):
-        folder_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
-        if folder_path == '':
+    def workDir_change(self):
+        work_path = filedialog.askdirectory(initialdir=USER_DESKTOP_PATH)
+        if work_path == '':
             return
-        shutil.rmtree(WORK_FOLDER_PATH)
-        shutil.move(folder_path, WORK_FOLDER_PATH)
+        if os.path.exists(WORK_FOLDER_PATH):
+            if os.path.isdir(WORK_FOLDER_PATH):
+                shutil.rmtree(WORK_FOLDER_PATH)
+            else:
+                os.remove(WORK_FOLDER_PATH)
+        shutil.move(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
         shutil.make_archive('archive_work', format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
