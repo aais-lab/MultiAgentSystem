@@ -48,7 +48,10 @@ class Window:
         if work_path == '':
             return
         if os.path.exists(WORK_FOLDER_PATH):
-            shutil.rmtree(WORK_FOLDER_PATH)
+            if os.path.isdir(WORK_FOLDER_PATH):
+                shutil.rmtree(WORK_FOLDER_PATH)
+            else:
+                os.remove(WORK_FOLDER_PATH)
         shutil.move(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
