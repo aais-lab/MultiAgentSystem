@@ -8,6 +8,7 @@ import datetime
 
 WORK_FOLDER_PATH = os.path.dirname(__file__)+'/MAS/work'
 USER_DESKTOP_PATH = os.path.expanduser('~')+'/Desktop'
+EXPORT_WORK_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
 
 class Window:
     def __init__(self) -> None:
