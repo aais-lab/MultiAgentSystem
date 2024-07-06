@@ -2,4 +2,4 @@
 cd "$(dirname "$0")"
 
 # Docker Composeを使ってRedisコンテナを停止
-docker-compose stop
+docker compose stop
