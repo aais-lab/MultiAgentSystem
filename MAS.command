@@ -15,11 +15,14 @@ if [ ${RUN} = 0 ]; then
     fi
 
     open -g -a /Applications/Docker.app
-    until [ ${RUN} = 1 ]
+
+    # 全てのプロセスの起動を待つ
+    DOCER_PROCESS_COUNT=`ps aux | grep docker | grep -v grep | wc -l`
+    until [ ${DOCER_PROCESS_COUNT} -gt 6 ]
     do
         sleep 1
         echo "Preparing to launch Docker Desktop ..."
-        RUN=`osascript -e 'tell application "System Events" to get name of (processes where background only is false)' | grep -c 'Docker Desktop'`
+        DOCER_PROCESS_COUNT=`ps aux | grep docker | grep -v grep | wc -l`
     done
     sleep 5
     echo "Docker Desktop is running..."
