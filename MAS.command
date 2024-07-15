@@ -32,4 +32,5 @@ fi
 
 ./StartRedisDocker.command
 python MAS.py
+osascript ./CloseTerminal.scpt
 ./StopRedisDocker.command
