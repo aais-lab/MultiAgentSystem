@@ -7,6 +7,7 @@ cd MAS
 xattr -d com.apple.quarantine ./StartMAS.command
 xattr -d com.apple.quarantine ./StartRedisDocker.command
 xattr -d com.apple.quarantine ./StopRedisDocker.command
+xattr -d com.apple.quarantine ./CloseTerminal.scpt
 chmod +x ./StartMAS.command
 chmod +x ./StartRedisDocker.command
 chmod +x ./StopRedisDocker.command
