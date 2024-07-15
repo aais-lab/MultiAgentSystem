@@ -61,6 +61,7 @@ class Window:
     def MAS_run(self):
         self.close_terminal()
         applescript_code = f"""
+            delay 1
             tell application "Terminal"
             activate
             do script "{WORK_FOLDER_PATH[:-len('MAS/work')]+'StartMAS.command'}"
