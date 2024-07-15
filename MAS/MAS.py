@@ -59,6 +59,7 @@ class Window:
         shutil.make_archive(os.path.join(EXPORT_WORK_PATH,'archive_work_'+format(now, '%Y-%m-%d_%H-%M-%S')), format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
         
     def MAS_run(self):
+        self.close_terminal()
         applescript_code = f"""
             tell application "Terminal"
             activate
@@ -66,6 +67,24 @@ class Window:
             set bounds of front window to {0, 0, 400, 320}
             end tell
             """
+        subprocess.Popen(["osascript", "-e", applescript_code])
+        
+    def close_terminal(self):
+        applescript_code = """ tell application "Terminal"
+                            set all_windows to every window
+                            repeat with cur_window in all_windows
+                                if name of cur_window contains "USER" then
+                                    tell cur_window
+                                        do script "end" in selected tab
+                                        delay 2
+                                    end tell
+                                end if
+                                if name of cur_window does not contain "MAS.command" then
+                                    set tempID to id of cur_window
+                                    tell the window id tempID to close
+                                end if
+                            end repeat
+                        end tell """
         subprocess.Popen(["osascript", "-e", applescript_code])
         
 if __name__ == '__main__':
