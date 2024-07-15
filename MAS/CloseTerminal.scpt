@@ -7,9 +7,6 @@ tell application "Terminal"
                 delay 2
             end tell
         end if
-        if name of cur_window does not contain "MAS.command" then
-            set tempID to id of cur_window
-            tell the window id tempID to close
-        end if
     end repeat
+    close every window
 end tell
