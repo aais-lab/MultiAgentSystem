@@ -52,7 +52,7 @@ class Window:
             return
         if os.path.exists(WORK_FOLDER_PATH):
             trash.send2trash(WORK_FOLDER_PATH)
-        shutil.move(work_path, WORK_FOLDER_PATH)
+        shutil.copytree(work_path, WORK_FOLDER_PATH)
         
     def folder_export(self):
         now = datetime.datetime.now()
