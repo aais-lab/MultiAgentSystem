@@ -13,5 +13,7 @@ chmod +x ./StartRedisDocker.command
 chmod +x ./StopRedisDocker.command
 pip install -r requirements.txt
 pip install --upgrade frozendict
+pip install -r requirements.txt
+pip install --upgrade frozendict
 echo '----------------------------------------------'
 echo 'Multi Agent System Setup Process finished'
