@@ -12,7 +12,7 @@ EXPORT_WORK_PATH = os.path.join(os.path.abspath(os.path.join(os.path.dirname(os.
 
 class Window:
     def __init__(self) -> None:
-        self.root = self.root = tkinter.Tk()
+        self.root = tkinter.Tk()
         self.root.title(u"Multi Agent System")
         w = self.root.winfo_screenwidth()-300
         h = self.root.winfo_screenheight()-330
