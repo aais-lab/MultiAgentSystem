@@ -27,7 +27,7 @@ class Window:
         self.button_open.pack(anchor=tkinter.W, pady=5)
         self.button_change = tkinter.Button(self.frame_folder, text='work差替', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.workDir_change)
         self.button_change.pack(side=tkinter.LEFT)
-        self.button_export = tkinter.Button(self.frame_folder, text='zipで出力', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_export)
+        self.button_export = tkinter.Button(self.frame_folder, text='提出用zip作成', font=('MSゴシック', '20'), padx=2, pady=2, width=8, background='white', command=self.folder_export)
         self.button_export.pack(side=tkinter.LEFT)
         
         self.frame_run = tkinter.Frame(self.root, relief=tkinter.FLAT, background='white')
