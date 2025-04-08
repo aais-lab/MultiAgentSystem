@@ -18,6 +18,7 @@ class Window:
         h = self.root.winfo_screenheight()-330
         self.root.geometry("300x300+"+str(w)+"+"+str(h))
         self.root.configure(background='white')
+        self.root.protocol("WM_DELETE_WINDOW", self.close)
         
         self.frame_folder = tkinter.Frame(self.root, relief=tkinter.FLAT, background='white')
         self.frame_folder.pack(fill=tkinter.BOTH, pady=10, padx=10)
@@ -91,6 +92,10 @@ class Window:
                             end repeat
                         end tell """
         subprocess.Popen(["osascript", "-e", applescript_code])
+    
+    def close(self):
+        self.root.quit()
+        self.root.destroy()
         
 if __name__ == '__main__':
     window = Window()
