@@ -19,7 +19,7 @@
 - Python
   - brew + pyenv
   - 3.10.5 <
-  - 3.11.6 >=
+  - 3.12.2 >=
 - ライブラリ
   - experta >= 1.9.4
   - paho-mqtt >= 1.6.1

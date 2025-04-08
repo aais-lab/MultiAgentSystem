@@ -2,4 +2,4 @@
 cd "$(dirname "$0")"
 
 # Docker Composeを使ってRedisコンテナを起動
-docker-compose up -d
+docker compose up -d
