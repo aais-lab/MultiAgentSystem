@@ -18,7 +18,7 @@ if [ ${RUN} = 0 ]; then
 
     # 全てのプロセスの起動を待つ
     DOCER_PROCESS_COUNT=`ps aux | grep docker | grep -v grep | wc -l`
-    until [ ${DOCER_PROCESS_COUNT} -gt 6 ]
+    until [ ${DOCER_PROCESS_COUNT} -ge 6 ]
     do
         sleep 1
         echo "Preparing to launch Docker Desktop ..."
