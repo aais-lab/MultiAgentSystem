@@ -13,6 +13,7 @@
   - paho-mqtt >= 1.6.1
   - redis >= 5.0.1
   - schema >= 0.6.7
+  - Send2Trash >= 1.8.0
 
 ### 開発・動作確認環境
 - MacOS
@@ -25,11 +26,15 @@
   - paho-mqtt >= 1.6.1
   - redis >= 5.0.1
   - schema >= 0.6.7
+  - Send2Trash >= 1.8.0
 
 ## Usage
 ### 導入方法
 #### DockerDesktopのインストール
-[DockerDesktopダウンロードページ](https://docs.docker.jp/desktop/install/mac-install.html)
+[DockerDesktopダウンロードページ](https://www.docker.com/ja-jp/products/docker-desktop/)
+Macにおいて、証明書関連のエラーでDockerがマルウェア扱いされる事案がありましたが、バージョンアップで解決するとのことです。
+そのためDockerはv4.37.2以降を利用するようにしてください。
+[関連するissue](https://github.com/docker/for-mac/issues/7527#issuecomment-2579351371)
 #### gitからクローン
 ```
 git clone https://github.com/aais-lab/MultiAgentSystem.git
