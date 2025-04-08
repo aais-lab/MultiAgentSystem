@@ -53,10 +53,14 @@ class Window:
         if os.path.exists(WORK_FOLDER_PATH):
             trash.send2trash(WORK_FOLDER_PATH)
         shutil.copytree(work_path, WORK_FOLDER_PATH)
+        tkinter.Tk().withdraw()
+        messagebox.showinfo("完了","workの差し替えが完了しました\n差し替え前のフォルダはゴミ箱へ移動しました")
         
     def folder_export(self):
         now = datetime.datetime.now()
         shutil.make_archive(os.path.join(EXPORT_WORK_PATH,'archive_work_'+format(now, '%Y-%m-%d_%H-%M-%S')), format='zip', root_dir=WORK_FOLDER_PATH[:-len('/work')], base_dir='work')
+        tkinter.Tk().withdraw()
+        messagebox.showinfo("完了","zipファイルが作成されました\nwork_archiveフォルダをご確認ください")
         
     def MAS_run(self):
         self.close_terminal()
