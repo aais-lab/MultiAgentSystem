@@ -34,3 +34,5 @@ fi
 python MAS.py
 osascript ./CloseTerminal.scpt
 ./StopRedisDocker.command
+pkill -KILL -f Docker
+pkill -KILL -f docker
