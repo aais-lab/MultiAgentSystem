@@ -114,7 +114,7 @@ class ExpertaUser(EdgeBaseAgent):
         
         print("\n---------------------------------------------------------------\n")
         if not self.__IS_INPUT:
-            self.__input_user_message(To=msg.From, Request=msg.Args["ReturnRequest"], Type=msg.Args['ReturnType'])
+            self.__input_user_message(to=msg.From, request=msg.Args["ReturnRequest"], type_=msg.Args['ReturnType'])
 
 
 def main() -> None:
