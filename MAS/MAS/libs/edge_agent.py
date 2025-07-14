@@ -32,6 +32,7 @@ class EdgeBaseAgent:
 
         if auto_load:
             self.__start()
+            self.IS_SYSTEM = True
 
 
     def __load_settings(self) -> None:
@@ -192,6 +193,7 @@ class EdgeBaseAgent:
     def stop_program(self) -> None:
         """コードの終了変数"""
         self.__stop()
+        self.IS_SYSTEM = False
 
 
     def on_connect(self) -> None:
